@@ -1,0 +1,58 @@
+import java.io.*;
+import java.net.*;
+
+class HohoClient {
+public static void main(String argv[]) throws Exception {
+String sentence,sentence1;
+String modifiedSentence,modifiedSentence1,modifiedSentence2;
+
+BufferedReader inFromUser = new Bufferedreader(new InputStreamReader(System.in));
+
+Socket clientSocket = new Socket ("192.168.150.132", 36858);
+
+DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+
+BufferedReader inFromServer = new BufferedReader(new InputStream(clientSocket.getInputStream()));
+
+sentence = inFromUser.readLine();
+outToServer.writeBytes(sentence + '\n');
+
+modifiedSentence = inFromServer.readLine();
+System.Out.prnitln("From Server:" + modifiedSentence);
+
+sentence1 = inFromUser.readLine();
+outToServer.writeBytes(sentence1 + '\n');
+
+modifiedSentence1 = inFromServer.readLine();
+System.Out.prnitln("From Server:" + modifiedSentence1);
+}
+}
+
+
+
+
+DataOutputStream outToClient = newDataOutputStream(connectionSocket.getOutputStream());
+
+clientSentence = inFromClient.readLine();
+System.out.println("Received:" + clientSentence);
+
+if(clientSentence.equalsIgnoreCase("Assalamualaikum"))
+{
+reply1 = reply1.toUpperCase() + '\n';
+outToClient.writeBytes(reply1);
+}
+else
+{
+reply2 = reply2.toUpperCase() + '\n';
+outToClient.writeBytes(reply2);
+
+clientSentence1 = inFromClient.readLine();
+System.out.println("Received:" + clientSentence1);
+
+reply3 = reply3.toUpperCase() + '\n';
+outToClient.writeBytes(reply3);
+}
+}
+}
+}
+
